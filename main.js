@@ -4,29 +4,32 @@ Write a function that parses through the below object and displays all of their
 favorite food dishes as shown:
 */
 
+// Define an object named person3 with various favorite food items
 let person3 = {
-    pizza:["Deep Dish","South Side Thin Crust"],
-    tacos:"Anything not from Taco bell",
-    burgers:"Portillos Burgers",
-    ice_cream:["Chocolate","Vanilla","Oreo"],
-    shakes:[{
-        oberwise:"Chocolate",
-        dunkin:"Vanilla",
-        culvers:"All of them",
-        mcDonalds:"Sham-rock-shake",
-        cupids_candies:"Chocolate Malt"
-    }]
+  pizza:["Deep Dish","South Side Thin Crust"],
+  tacos:"Anything not from Taco bell",
+  burgers:"Portillos Burgers",
+  ice_cream:["Chocolate","Vanilla","Oreo"],
+  shakes:[{
+    oberwise:"Chocolate",
+    dunkin:"Vanilla",
+    culvers:"All of them",
+    mcDonalds:"Sham-rock-shake",
+    cupids_candies:"Chocolate Malt"
+  }]
 }
+
+// Define a function named favFood that takes an object as input and displays all favorite food items
 const favFood = (obj, temp = null) => {
-    if (temp && Array.isArray(obj)) console.log(temp);
-    for (key in obj) {
-      if (typeof obj[key] == "string")
-        console.log(`${Array.isArray(obj) ? "\t" : `${key}:`} ${obj[key]}`);
-      else {
-        favFood(obj[key], key);
-      }
+  if (temp && Array.isArray(obj)) console.log(temp); // If temp is not null and obj is an array, log temp
+  for (key in obj) {
+    if (typeof obj[key] == "string") // If the value is a string, log the key-value pair
+      console.log(`${Array.isArray(obj) ? "\t" : `${key}:`} ${obj[key]}`);
+    else {
+      favFood(obj[key], key); // Recursively call favFood for nested objects
     }
-  };
+  }
+};
   
   favFood(person3);
 
